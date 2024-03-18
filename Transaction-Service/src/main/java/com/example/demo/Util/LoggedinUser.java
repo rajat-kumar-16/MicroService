@@ -16,5 +16,4 @@ public class LoggedinUser {
         }
         throw new NotFoundException("Account number not found in Security Context.");
     }
-
 }

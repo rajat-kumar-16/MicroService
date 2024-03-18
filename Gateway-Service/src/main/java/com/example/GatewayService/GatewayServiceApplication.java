@@ -2,6 +2,7 @@ package com.example.GatewayService;
 
 import java.net.http.HttpClient;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -11,6 +12,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.reactive.CorsWebFilter;
+import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 
 @SpringBootApplication
 //@FeignClient(value= "Gateway-Service")
@@ -30,4 +34,6 @@ public class GatewayServiceApplication {
 						.uri("lb://User-Service"))
 				.build();
 	}
+
+
 }

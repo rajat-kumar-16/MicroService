@@ -13,6 +13,22 @@ spring:
           enabled: true
           # enable applications name in lower case
           lower-case-service-id: true
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedHeaders:
+              - "Origin"
+              - "Content-Type"
+              - "Accept"
+              - "Authorization"
+              - "Referer"
+            allowedMethods:
+              - POST
+              - GET
+              - PUT
+              - OPTIONS
 eureka:
   client:
     service-url:
