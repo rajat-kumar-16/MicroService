@@ -1,5 +1,6 @@
 package com.example.demo.Controller;
 
+import com.example.demo.Exception.EmailAlreadyExist;
 import com.example.demo.Exception.InsufficientBalanceException;
 import com.example.demo.Exception.InvalidJwtTokenException;
 import com.example.demo.Exception.NotFoundException;
@@ -28,6 +29,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InsufficientBalanceException.class)
     public ResponseEntity<String> handleInsufficientBalanceException(InsufficientBalanceException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+    @ExceptionHandler(EmailAlreadyExist.class)
+    public ResponseEntity<String> handleEmailAlreadyExists(EmailAlreadyExist ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 }

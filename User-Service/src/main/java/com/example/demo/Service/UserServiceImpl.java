@@ -13,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 
 @Service
@@ -22,8 +21,6 @@ public class UserServiceImpl implements UserService {
     private final AccountService accountService;
     @Autowired
     private AccountRepository accountRepository;
-    @Autowired
-    private WebClient webClient;
     private final PasswordEncoder passwordEncoder;
     @Autowired
     public UserServiceImpl(UserRepository userRepository, AccountService accountService, PasswordEncoder passwordEncoder) {
@@ -46,8 +43,8 @@ public class UserServiceImpl implements UserService {
         savedUser.setAccount(account);
         userRepository.save(savedUser);
 
-        System.out.println(savedUser.getAccount().getAccountNumber());
-        System.out.println(account.getUser().getName());
+//        System.out.println(savedUser.getAccount().getAccountNumber());
+//        System.out.println(account.getUser().getName());
         return savedUser;
     }
 
