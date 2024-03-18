@@ -1,0 +1,28 @@
+server:
+  port: 8080
+eureka:
+  instance:
+    prefer-ip-address: true
+    defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: Transaction-Service
+  cloud:
+    discovery:
+      enabled: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/Bank
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    generate-ddl: true
+    hibernate:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+      ddl-auto: update
+
+jwt:
+  secret: "BLUEYONDERBELLANDURBENGALURUBLUEYONDERBELLANDURBENGALURUBLUEYONDERBELLANDURBENGALURUBENGALURUBLUEYONDERBELLANDURBENGALURUBENGALURUBLUEYONDERBELLANDURBENGALURU"
+  expiration: 86400000
+  header: "Authorization"
+  prefix: "Bearer"
