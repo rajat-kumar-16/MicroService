@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
         savedUser.setAccount(account);
         userRepository.save(savedUser);
 
-        System.out.println(savedUser.getAccount().getAccountNumber());
-        System.out.println(account.getUser().getName());
+//        System.out.println(savedUser.getAccount().getAccountNumber());
+//        System.out.println(account.getUser().getName());
         return savedUser;
     }
 
