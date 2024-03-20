@@ -8,7 +8,6 @@ public class LoggedinUser {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
             Object principal = authentication.getPrincipal();
-
             if (principal instanceof User) {
                 User user = (User) principal;
                 return user.getUsername();

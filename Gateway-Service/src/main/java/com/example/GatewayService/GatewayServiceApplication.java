@@ -22,6 +22,7 @@ import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
 public class GatewayServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GatewayServiceApplication.class, args);
+		System.out.println("Gateway Service");
 	}
 	@Bean
 	public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {

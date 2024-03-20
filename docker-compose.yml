@@ -1,0 +1,62 @@
+version: "3"
+
+services:
+
+        eureka:
+                build: ./Discovery-Service/
+                image: discovery-server:0.1
+                container_name: Discovery
+                ports:
+                        - "8761:8761"
+
+        user:
+                build: ./User-service/
+                image: user-server:0.1
+                container_name: User
+                ports:
+                        - "8090:8090"
+                extra_hosts:
+                        - "mysqldb:192.168.0.33"
+                links:
+                        - eureka
+                        - gateway
+                # depends_on:
+                #         - eureka
+                volumes:
+                        - /opt/docker/log:/app/log
+
+
+        transaction:
+                build: ./Transaction-service/
+                image: transaction-server:0.1
+                container_name: Transaction
+                ports:
+                        - "8080:8080"
+                extra_hosts:
+                        - "mysqldb:192.168.0.33"
+                links:
+                        - eureka
+                        - user
+                        - gateway
+                volumes:
+                        - /opt/docker/log:/app/log
+             
+
+        gateway:
+                build: ./Gateway-Service/
+                image: gateway-server:0.1
+                container_name: Gateway
+                links:
+                        - eureka
+                ports:
+                        - "8082:8082"
+
+        
+networks:
+        micro_network:
+                driver: bridge  
+                ipam:
+                        driver: default
+                        config:
+                                - subnet: "172.19.0.0/16"
+    
